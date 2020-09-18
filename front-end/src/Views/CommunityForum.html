@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./CommunityForum.css">
+    <title>Community Forum</title>
+</head>
+<body>
+    <div class="navbar">
+        <h1>BOOXMATE</h1>
+        <input type="text" name="search" id="search" placeholder="Search for a Book..." />
+        <i class="fas fa-search"></i>
+        <div class="btn">
+            <button class="btn-cart">Cart</button>
+            <button class="btn-login">Log In</button>
+        </div>
+    </div>
+
+
+    <div class="community-forum">
+        <div class="question-input">
+            <input class="question-input-box" type="text" name="QuestionInput" id="question-input" placeholder="Having a Question?" >
+            <input class="submit" type="submit" value="Submit">
+        </div>
+        <div class="recent-ques">
+            <div class="question">
+                <p class="ques">Q. Which is the best book to learn JavaScript?</p>
+                <p class="ans">Ans. You can learn javascript from HeadFirst javascript book.</p>
+                <button class="give-answer">Submit your Answer</button>
+            </div>
+            <div class="question">
+                <p class="ques">Q. Which is the best book to learn JavaScript?</p>
+                <p class="ans">Ans. You can learn javascript from HeadFirst javascript book.</p>
+                <button class="give-answer">Submit your Answer</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="submit-answer-popup .active">
+        <input class="answer-input" type="text" name="submit-answer" id="submit-answer" placeholder="Your answer...">
+        <div class="buttons">
+            <input class="answer-submit" type="submit" value="Cancel">
+            <input class="answer-submit" type="submit" value="Submit">
+        </div>
+    </div>
+
+</body>
+</html>
