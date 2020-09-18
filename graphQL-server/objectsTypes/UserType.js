@@ -11,7 +11,7 @@ const fetchHandler = require('../handlers/fetch_handler').Handler;
 module.exports.obj = new GraphQLObjectType({
     name: 'User',
     description: 'A user object',
-    fields: ({
+    fields:() => ({
         userid: { type: GraphQLInt},
         uname: { type: GraphQLString },
         uspassword: { type: GraphQLString },
@@ -22,20 +22,26 @@ module.exports.obj = new GraphQLObjectType({
         
         bookmarked: {
             type: GraphQLList(BookType),
-            resolve: (parent) => {
-                return [];
+            resolve: async (parent) => {
+                var id = parent.userid;
+                var data = await fetchHandler(`/bookmark/${id}`);
+                return data;
             }
         },
         cart: {
             type: GraphQLList(BookType),
-            resolve: (parent) => {
-                return [];
+            resolve: async (parent) => {
+                var id = parent.userid;
+                var data = await fetchHandler(`/cart/${id}`);
+                return data;
             }
         },
         books: {
             type: GraphQLList(BookType),
-            resolve: (parent) => {
-                return [];
+            resolve: async (parent) => {
+                var id = parent.userid;
+                var data = await fetchHandler(`/book-2/${id}`);
+                return data;
             }
         }
     })

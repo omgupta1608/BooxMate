@@ -9,7 +9,7 @@ app.use(graphqlHTTP({
     graphiql: true
 }));
 
-var port = process.env.PORT || 5000;
-app.listen(5000, () => {
+var port = process.env.PORT || 3000;
+app.listen(port, () => {
     console.log(`Wrapper server started at ${port}`);
 });

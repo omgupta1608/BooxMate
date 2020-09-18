@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
+const morgan = require('morgan');
 const app = express();
 dotenv.config();
 
@@ -13,7 +13,8 @@ const connect = mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true
 });
 
 module.exports = connect;
-
+app.use(morgan('combined'));
+morgan(':remote-addr :method :url');
 //routes
 const userRoute = require('./routes/user');
 const bookRoute = require('./routes/book');

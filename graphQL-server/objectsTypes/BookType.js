@@ -14,7 +14,7 @@ const RequestType = require('../objectsTypes/UserType').obj;
 module.exports.obj = new GraphQLObjectType({
     name: 'Book',
     description: 'A book object',
-    fields: ({
+    fields:() => ({
         bookid: { type: GraphQLString },
         bookname: { type: GraphQLString },
         bookdescription: { type: GraphQLString },
@@ -29,7 +29,7 @@ module.exports.obj = new GraphQLObjectType({
         user: {
             type: UserType,
             resolve: async (parent) => {
-                var id = parent.userid;
+                var id = parent.user.userid;
                 var user = await fetchHandler(`/user/${id}`);
                 return user;                
             }
@@ -38,9 +38,9 @@ module.exports.obj = new GraphQLObjectType({
         issold: { type: GraphQLBoolean },
         postdate: { type: GraphQLString },
         requests: {
-            type: GraphQLList(RequestType),
-            resole: () => {
-                return [];
+            type: GraphQLInt,
+            resolve: () => {
+                return 0;
             }
         } 
     })
