@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+//buy
 class SellRent extends Component {
     state = {  }
     render() { 
