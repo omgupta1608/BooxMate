@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Herobox from './components/Herobox'
 import Linkbox from './components/Linkbox'
+import BooksDisplay from './components/BooksDisplay'
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <Navbar />
       <Herobox />
       <Linkbox />
-      Hello World!!!
+      <BooksDisplay />
     </div>
   );
 }
