@@ -3,7 +3,8 @@ const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const User = require('../schema/userschema');
+const Demo = require('../schema/demoschema');
+const bookschema = require('../schema/bookschema');
 
 router.use(express.json());
 dotenv.config();
@@ -19,13 +20,13 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopo
 
 
 
-//get api for all user
+//get api for all demo
 router.get('/',async(req,res)=>{
-    const user = await User.find();
-    console.log(user);
+    const demo = await Demo.find();
+    console.log(demo);
     res.json({
-        data: user,
-        message: "All users.."
+        data: demo,
+        message: "All demos.."
     });
 });
 
@@ -35,14 +36,14 @@ router.get('/:id',(req,res)=>{
     //check if user exists
     if(!user) return res.status(404).json({
         data:{},
-        message: 'No such user exist. Please check and try again later'
+        message: 'No such demo exist. Please check and try again later'
     });
 
     //if exist and no err
     if(!err){
         res.json({
-            data:user,
-            message:"User fetched!"
+            data:demo,
+            message:"Demo fetched!"
         });
     }
     else{

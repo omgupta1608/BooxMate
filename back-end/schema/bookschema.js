@@ -1,39 +1,39 @@
-//Schema
+const mongoose = require('mongoose');
 
 const bookschema = mongoose.Schema({
     bookid: {
         type: String,
-        required:true,
+        // required:true
     },
 
     bookname: {
         type: String,
-        required: true,
+        // required: true
     },
 
     bookdescription:{
         type: String,
-        required: true
+        // required: true
     },
 
     bookimage:{
         type: String,
-        required: true
+       // required: true
     },
 
     category:{
         type: String,
-        required: true
+        // required: true
     },
 
     price:{
         type: Number,
-        required: true
+        // required: true
     },
     
-    booktype:{
+    mode:{
         type: String,
-        required: true
+        // required: true
     },
 
     duration:{
@@ -42,42 +42,49 @@ const bookschema = mongoose.Schema({
 
     author:{
         type: String,
-        required: true
+        // required: true
     },
 
     publisher:{
         type: String,
-        required: true
+        // required: true
     },
 
     edition:{
         type: String
     },
 
-    userid:{
-        type: String,
-        required: true
+    user:{
+        type: String,   //string url 
+        //required: true
     },
 
     requestcount:{
-        type: Number
+        type: Number,
+        default:0
     },
 
     isclosed:{          //request
-        type: boolean,
-        required: true
+        type: Boolean,
+        default: false
     },
 
     issold:{
-        type: boolean,
-        required: true
-    } 
+        type: Boolean,
+        default: false
+    },
 
+    postdate:{
+        type: Date,
+        // required: true,
+        // default: 
+    },
 
-
-
-
+    location:{
+        type: String,
+        // required: true
+    }
 
 });
 
-const users = mongoose.model('User',userschema);
+module.exports = mongoose.model('Book', bookschema);
