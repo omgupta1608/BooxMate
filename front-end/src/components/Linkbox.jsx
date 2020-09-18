@@ -5,6 +5,7 @@ import community_forum from "../images/community.png";
 import demo_book from "../images/add-book.png";
 
 //Sell-Community-Demo cards
+//hi
 
 class Linkbox extends Component {
   toSellRent = () => {
