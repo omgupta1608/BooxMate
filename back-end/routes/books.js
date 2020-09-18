@@ -1,111 +1,147 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-const router = express.Router();
+const crypto = require('crypto');   //for generating the file names
 const mongoose = require('mongoose');
-
-const fetch = require('node-fetch');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
-const connect = require('../index');
+const fetch = require('node-fetch');
+const dotenv = require('dotenv');
 
+const app = express();
+const router = express.Router();
 
 //schema
 const Book = require('../schema/bookschema');
 const {Bookmark, Cart} = require('../schema/bookschema');
 
+
+//Middleware
+
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.set('view engine','ejs');
 
-
-const dotenv = require('dotenv');
-// router.use(express.json({limit: '50mb'}));
-// router.use(express.urlencoded({limit: '50mb'}));
+//dotenv
+const mongoURI = process.env.DB_CONNECT;
 dotenv.config();
 
-mongoose.set('debug');
+//connection to DB
+const connect = mongoose.createConnection(mongoURI,{useUnifiedTopology: true, useNewUrlParser: true });
+
+//Init G-FS
+let gfs;
+connect.once('open',()=>{
+    //Init stream
+    gfs = Grid(connect.db, mongoose.mongo);
+    gfs.collection('uploads');
+});
 
 
-// router.use(bodyParser.json());
+//storage engine
 
-router.use(methodOverride('_method'));
+const storage = new GridFsStorage({
+  url: mongoURI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
 
-// const mongoURI = process.env.DB_CONNECT 
-// //Connect to DB
-// const connect = mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true},()=>{
-//     console.log('Connected to Database!');
-// });
+const upload = multer({ storage });
 
 
-// //Init G-FS
-// let gfs;
-// connect.once('open',()=>{
-//     //Init stream
-//     gfs = Grid(connect.db, mongoose.mongo);
-//     gfs.collection('uploads');
-// });
+app.get('/',(req,res)=>{
+    gfs.files.find().toArray((err, files)=>{
+        //if files r there
+        if(!files || files.length ===0){
+            res.render('app',{files: false});   
+        }else{
+            files.map(file=>{
+                if(file.contentType ==='image/jpeg'||file.contentType ==='image/png'){
+                    file.isImage = true;
+                } else{
+                    file.isImage = false;
+                }
+            });
+            console.log('files:'+JSON.stringify(files));
+            res.render('app',{files:files});
+        }
+    });
+});
 
-
-// //storage engine
-
-// const storage = new GridFsStorage({
-//   url: mongoURI,
-//   file: (req, file) => {
-//     return new Promise((resolve, reject) => {
-//       crypto.randomBytes(16, (err, buf) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         const filename = buf.toString('hex') + path.extname(file.originalname);
-//         const fileInfo = {
-//           filename: filename,
-//           bucketName: 'uploads'
-//         };
-//         resolve(fileInfo);
-//       });
-//     });
-//   }
-// });
-
-// const upload = multer({ storage });
-
-// router.get('/',(req,res)=>{
-//     gfs.files.find().toArray((err, files)=>{
-//         //if files r there
-//         if(!files || files.length ===0){
-//             res.render('app',{files: false});   
-//         }else{
-//             files.map(file=>{
-//                 if(file.contentType ==='image/jpeg'||file.contentType ==='image/png'){
-//                     file.isImage = true;
-//                 } else{
-//                     file.isImage = false;
-//                 }
-//             });
-//             console.log('files:'+JSON.stringify(files));
-//             res.render('app',{files:files});
-//         }
-//     });
-// });
-
-// router.use(bodyParser.json({ limit: "50mb" }))
-// router.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 
 //upload to DB
-// router.post('/upload',upload.single('file'),(req,res)=>{       //multer can upload even an array of files but its not needed rn. 'file is the filename written in the form in html in class custom-file mb-3'
-//     // //res.json({file: req.file});
-//     // console.log(JSON.stringify({file: req.file}));
-//     // res.end();
-//     // //res.json({file: req.file});
-    
-//     res.send("Hello");
+app.post('/upload',upload.single('file'),(req,res)=>{       //multer can upload even an array of files but its not needed rn. 'file is the filename written in the form in html in class custom-file mb-3'
+    res.json({file: req.file});
+    console.log(JSON.stringify({file: req.file}));
+    console.log('uploaded!');
+    // res.redirect('/');
+});
+
+//display all files
+
+app.get('/files',(req,res)=>{
+    gfs.files.find().toArray((err, files)=>{
+        //if files r there
+        if(!files || files.length ===0){
+            return res.status(404).json({
+                err: 'No files exist'
+            });
+        }
+        console.log('files:'+JSON.stringify(files));
+         //File exist
+         return res.json(file); 
+    });
+});
+
+//display specific file
+
+app.get('/image/:filename',(req,res)=>{
+    gfs.files.findOne({filename: req.params.filename},(err, file)=>{
+        //if files r there
+        if(!file || file.length === 0){
+            return res.status(404).json({
+                err: 'No file exist'
+            });
+        }
+
+        // check if image
+        if(file.contentType = 'image/jpeg'|| file.contentType == 'image/png'){
+            //create read stream to the browser
+            const readstream = gfs.createReadStream(file.filename);
+            readstream.pipe(res);
+        } else{
+            res.status(404).json({
+                err:"Not an image"
+            });
+        }
+    });
+       
+});
+
+
+// //delete
+
+// app.delete('/files/:id',(req,res)=>{
+//     gfs.remove({_id: req.params.id, root:'uploads'},(err, gridStore)=>{
+//         if(err) return res.status(404).json({err : err});
+//         res.redirect('/');
+//     });
 // });
-
-
-
 
 //adding a book
 router.post('/addbook',(req,res)=>{
