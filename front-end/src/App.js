@@ -1,21 +1,33 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 // Importing components
-import Navbar from './components/Navbar';
-import Herobox from './components/Herobox'
-import Linkbox from './components/Linkbox'
-import BooksDisplay from './components/BooksDisplay'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Test1 from "./components/SellRent";
+import CommunityForm from "./components/CommunityForm";
+import SellRent from "./components/SellRent";
+import HomePage from "./components/HomePage";
+import DemoBook from "./components/DemoBook";
 
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Herobox />
-      <Linkbox />
-      <BooksDisplay />
-    </div>
-  );
+class App extends Component {
+  state = {
+    
+  };
+  render() {
+    return (
+      <BrowserRouter>
+          <div className="content">
+            <Switch>
+              <Route  path="/" exact component={HomePage}></Route>
+              <Route  path="/CommunityForm" exact component={CommunityForm}></Route>
+              <Route  path="/DemoBook" exact component={DemoBook}></Route>
+              <Route  path="/SellRent" exact component={SellRent}></Route>
+            </Switch>
+          </div>
+      
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
