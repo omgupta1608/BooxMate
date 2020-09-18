@@ -68,3 +68,4 @@ const QuestionType = new GraphQLObjectType({
 });
 
 module.exports.obj = QuestionType;
+module.exports.obj_a = AnswerType;
