@@ -2,23 +2,19 @@ const mongoose = require('mongoose');
 
 const demoschema = mongoose.Schema({
     demoid: {
-        type: String,
-        required:true,
+        type: String
     },
 
     title: {
-        type: String,
-        required: true
+        type: String
     },
 
     description:{
-        type: String,
-        required: true
+        type: String
     },
 
     file:{
-        type: String,
-        required: true
+        type: String
     },
 
     user:{

@@ -1,0 +1,102 @@
+const express = require('express');
+const app = express();
+const router = express.Router();
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const Review = require('../schema/reviewschema');
+const connect = require('../index');
+const { request } = require('express');
+
+router.use(express.json());
+
+//post api for posting reviews
+router.post('/add-review',(req,res)=>{
+    console.log('review');
+
+    const review = new Review({
+        reviewid: req.body.reviewid,
+        review: req.body.review,
+        user: req.body.user,
+        reviewdate: req.body.reviewdate
+    });
+
+    console.log(req.body);
+
+    answer.save((err,answer)=>{
+        if(err) {
+            console.log('inside err');
+            res.send("Error: "+ err);
+        }
+        // res.send(user._id);
+        res.send(answer);
+        console.log('saved!');
+    });
+    
+
+});
+
+//get api for all review
+router.get('/',async(req,res)=>{
+    const review = await Review.find();
+    console.log(review);
+    res.json({
+        data: review,
+        message: "All reviews.."
+    });
+});
+
+//get api for a specific review
+router.get('/:id',(req,res)=>{
+    Review.findById(req.params.id, (err, review));
+    //check if user exists
+    if(!review) return res.status(404).json({
+        data:{},
+        message: 'No such answer exist. Please check and try again later'
+    });
+
+    //if exist and no err
+    if(!err){
+        res.json({
+            data:review,
+            message:"Review fetched!"
+        });
+    }
+    else{
+        res.status(404).json({
+            data:{},
+            message: 'Some unexpected error occurred.'
+        });
+    }
+});
+
+//review->demo id
+
+router.get('/:demo',(req,res)=>{
+    Review.findOne({demo: req.params.demo},(err,review)=>{
+        //check if user exists
+    if(!review) return res.status(404).json({
+        data:{},
+        message: 'No such thing exist. Please check and try again later'
+    });
+
+    //if exist and no err
+    if(!err){
+        res.json({
+            data:review,
+            message:"Fetched!"
+        });
+    }
+    else{
+        res.status(404).json({
+            data:{},
+            message: 'Some unexpected error occurred.'
+        });
+    }
+    });
+    
+});
+
+
+module.exports = router;
+
+

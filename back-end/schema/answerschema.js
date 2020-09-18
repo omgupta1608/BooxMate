@@ -20,12 +20,13 @@ const answerschema = mongoose.Schema({
     },
 
     answerdate:{
-        type: Date,
-        required: true
+        type: Date
+        // required: true
     },
 
     hearts:{
-        type: Number
+        type: Number,
+        default: 0
     }   
 });
 

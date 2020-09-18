@@ -75,16 +75,30 @@ const bookschema = mongoose.Schema({
     },
 
     postdate:{
-        type: Date,
+        type: Date
         // required: true,
         // default: 
     },
 
     location:{
-        type: String,
+        type: String
         // required: true
     }
 
 });
 
+var bookmarks = mongoose.Schema({
+    bookmarks: {
+        type: [bookschema]
+    }
+});
+
+var cart = mongoose.Schema({
+    cart:{
+        type: [bookschema]
+    }
+});
+
 module.exports = mongoose.model('Book', bookschema);
+module.exports.bookmarks = mongoose.model('Bookmarks', bookmarks);
+module.exports.cart = mongoose.model('Cart', cart);

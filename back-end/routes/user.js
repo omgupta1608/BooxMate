@@ -4,18 +4,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const User = require('../schema/userschema');
+const connect = require('../index');
 
 router.use(express.json());
-dotenv.config();
-
-mongoose.set('debug');
-
-
-
-//Connect to DB
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true},()=>{
-    console.log('Connected to Database!');
-});
 
 
 

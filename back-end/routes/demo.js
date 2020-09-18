@@ -5,19 +5,42 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Demo = require('../schema/demoschema');
 const bookschema = require('../schema/bookschema');
+const connect = require('../index');
 
 router.use(express.json());
-dotenv.config();
-
-mongoose.set('debug');
 
 
+//posting a demo
+router.post('/add-demo',(req,res)=>{
+    console.log('demo');
 
-//Connect to DB
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true},()=>{
-    console.log('Connected to Database!');
+    const demo = new Demo({
+        demoid: req.body.demoid,
+        title: req.body.question,
+        description: req.body.answer,
+        file: req.body.user,
+        user: req.body.answerdate,
+        reviews:req.body.review,
+        starcount: req.body.starcount,
+        ratedcount: req.body.ratedcount,
+        reviewscount: req.body.reviewscount,
+        demodate: req.body.demodate
+    });
+
+    console.log(req.body);
+
+    demo.save((err,demo)=>{
+        if(err) {
+            console.log('inside err');
+            res.send("Error: "+ err);
+        }
+        // res.send(user._id);
+        res.send(demo);
+        console.log('saved!');
+    });
+    
+
 });
-
 
 
 //get api for all demo
@@ -31,12 +54,13 @@ router.get('/',async(req,res)=>{
 });
 
 //get api for a specific user
+
 router.get('/:id',(req,res)=>{
-    User.findById(req.params.id, (err, user));
-    //check if user exists
-    if(!user) return res.status(404).json({
+    Demo.findOne({demoid: req.params.id},(err,demo)=>{
+        //check if user exists
+    if(!demo) return res.status(404).json({
         data:{},
-        message: 'No such demo exist. Please check and try again later'
+        message: 'No such book exist. Please check and try again later'
     });
 
     //if exist and no err
@@ -52,7 +76,10 @@ router.get('/:id',(req,res)=>{
             message: 'Some unexpected error occurred.'
         });
     }
+    });
+    
 });
+
 
 
 module.exports = router;
