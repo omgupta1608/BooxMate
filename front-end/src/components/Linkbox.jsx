@@ -13,7 +13,7 @@ class Linkbox extends Component {
   };
 
   toCommunityForm = () => {
-    window.open("/CommunityForm", "_self");
+    window.open("/CommunityForum", "_self");
   };
 
   toDemoBook = () => {
