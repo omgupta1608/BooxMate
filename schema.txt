@@ -5,8 +5,9 @@ User{
 	contact -String (phone),
 	uemail -String,
 	profilepic -Image,
-	bookemarked - [Book] (array of Books),
-	cart -[Book] (array of Books)
+	bookmarked - [Book] (array of Books),
+	cart -[Book] (array of Books),
+	books -[Books] (array of Books)
 }
 
 Book{
@@ -16,12 +17,12 @@ Book{
 	bookimage -Image,
 	category -String,
 	price -Number,
-	type -String (rent/sell),
+	mode -String (rent/sell),
 	duration -String (if rent),
 	author -String,
 	publisher -String,
 	edition -String,
-	userid -String,
+	user -String,
 	requestcount -Number,
 	issold -boolean,
 	postdate -Date,
@@ -32,7 +33,7 @@ Question{
 	questionid -String,
 	title -String,
 	description -String,
-	userid -String,
+	user -String,
 	answerscount -Number,
 	answers -[Answer] (array of Answers),
 	askdate -Date,
@@ -42,9 +43,9 @@ Question{
 
 Answer{
 	answerid -String,
-	questionid -String,
+	question -String,
 	answer -String,
-	userid -String,
+	user -String,
 	answerdate -Date,
 	hearts -Number
 }
@@ -54,7 +55,7 @@ Demo{
 	title -String,
 	description -String,
 	file -File,
-	userid -String,
+	user -String,
 	starcount -Number,
 	ratedcount -Number,
 	reviewscount -Number,
@@ -65,13 +66,13 @@ Demo{
 Review{
 	reviewid -String,
 	review -String,
-	userid -String,
+	user -String,
 	reviewdate -Date
 }
 
 Request{
 	requestid -String,
-	bookid -String,
-	userid -String,
+	book -String,
+	user -String,
 	requestdate -Date
 }
