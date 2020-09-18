@@ -9,6 +9,14 @@ html{
   box-sizing: border-box;
 }
 
+a, a:hover, a::after, a::before {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
 .navbar {
   display: flex;
   width: 100%;
@@ -105,8 +113,8 @@ html{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
-  padding: 25px;
+  /* margin-top: 2rem; */
+  padding: 0px 25px 25px 25px;
 }
 
 .bookcard {
@@ -116,6 +124,7 @@ html{
   min-width: 300px;
   width: 30vw;
   padding: 1.5rem;
+  margin: 15px 5px;
   border: 1px solid rebeccapurple;
   min-height: 8rem;
 }
