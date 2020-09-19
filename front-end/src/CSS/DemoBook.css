@@ -1,0 +1,22 @@
+.demobook {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo {
+    /* background-color: salmon; */
+    padding: 1rem;
+    width: 60vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#file {
+    width: auto;
+    border: none;
+}

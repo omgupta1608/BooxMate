@@ -11,8 +11,10 @@
     margin: 5px;
   }
   
-  .herobox .herotitle {
-    display: none;
-    font-size: 3rem;
+  .herobox .hero-title {
+    font-size: 1.1rem;
   }
   
+  .hero-title h3 {
+    font-size: 2rem;
+  }

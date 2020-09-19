@@ -1,0 +1,24 @@
+
+
+
+.cart-body {
+    margin-top: 4rem;
+    min-height: 100vh;
+}
+
+.cart-body h2 {
+    margin: 2rem 0;
+}
+
+.bookcardforcart {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    min-width: 300px;
+    width: 30vw;
+    padding: 1.5rem;
+    margin: 15px auto;
+    border: 1px solid rebeccapurple;
+    min-height: 8rem;
+    background-color: rgb(255, 255, 255);
+}
