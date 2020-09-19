@@ -7,22 +7,32 @@ import CommunityForum from "./components/CommunityForum";
 import SellRent from "./components/SellRent";
 import HomePage from "./components/HomePage";
 import DemoBook from "./components/DemoBook";
-
-
+import Books from "./api_handlers/books";
+import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 class App extends Component {
-  state = {
-    
-  };
+  state = {};
+
+  // App() {
+  //   return (
+  //     <>
+  //       <LoginButton />
+  //       <LogoutButton />
+  //     </>
+  //   );
+  // }
+
   render() {
     return (
       <BrowserRouter>
         <div className="content">
           <Switch>
-            <Route  path="/" exact component={HomePage}></Route>
-            <Route  path="/CommunityForum" exact component={CommunityForum}></Route>
-            <Route  path="/DemoBook" exact component={DemoBook}></Route>
-            <Route  path="/SellRent" exact component={SellRent}></Route>
-          </Switch>
+         <Route path='/bookDetails/(:any)' component={SignUp}></Route>
+         <Route path='/' component={HomePage}></Route>
+         <Route path='/cart' component={Profile}></Route>
+         <Route path='/search' component={Profile}></Route>
+         </Switch>
+        <HomePage/>                                                                                                                                                                                                             
         </div>
       </BrowserRouter>
     );
