@@ -4,6 +4,7 @@ const router = express.Router();
 const Request = require('../schema/requestschema');
 const { request } = require('express');
 const connect = require('../index');
+const {genId,getDate} = require('../routes/function');
 
 router.use(express.json());
 
@@ -13,7 +14,7 @@ router.post('/add-request',(req,res)=>{
     console.log('request');
 
     const request = new Request({
-        requestid: req.body.requestid,
+        requestid: genId(6),
         book: req.body.book,
         user: req.body.user,
         requestdate: req.body.requestdate
@@ -69,7 +70,7 @@ router.get('/:id',(req,res)=>{
 });
 
 //request-> book
-router.get('/:book',(req,res)=>{
+router.get('/bid/:book',(req,res)=>{
     Request.findOne({book: req.params.book},(err,request)=>{
         //check if user exists
     if(!request) return res.status(404).json({

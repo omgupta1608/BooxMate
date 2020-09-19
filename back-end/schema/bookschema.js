@@ -2,37 +2,38 @@ const mongoose = require('mongoose');
 
 const bookschema = mongoose.Schema({
     bookid: {
-        type: String,
+        type: String
         // required:true
     },
 
     bookname: {
-        type: String,
+        type: String
         // required: true
     },
 
     bookdescription:{
-        type: String,
+        type: String
         // required: true
     },
 
     bookimage:{
         type: String,
+        deeault:""
        // required: true
     },
 
     category:{
-        type: String,
+        type: String
         // required: true
     },
 
     price:{
-        type: Number,
+        type: Number
         // required: true
     },
     
     mode:{
-        type: String,
+        type: String
         // required: true
     },
 
@@ -41,12 +42,12 @@ const bookschema = mongoose.Schema({
     },
 
     author:{
-        type: String,
+        type: String
         // required: true
     },
 
     publisher:{
-        type: String,
+        type: String
         // required: true
     },
 
@@ -55,7 +56,7 @@ const bookschema = mongoose.Schema({
     },
 
     user:{
-        type: String,   //string url 
+        type: String   //string url 
         //required: true
     },
 
@@ -75,7 +76,7 @@ const bookschema = mongoose.Schema({
     },
 
     postdate:{
-        type: Date
+        type: String
         // required: true,
         // default: 
     },

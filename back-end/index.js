@@ -32,7 +32,7 @@ app.use('/api/demo',demoRoute);
 app.use('/api/question',questionRoute);
 app.use('/api/request',requestRoute);
 app.use('/api/review',reviewRoute);
-app.use('./api/book-2',bookRoute2);
+app.use('/api/book-2',bookRoute2);
 
 
-app.listen(4610,()=> console.log('Server is running'));
+app.listen(4640,()=> console.log('Server is running'));

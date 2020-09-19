@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const Question = require('../schema/questionschema');
 const connect = require('../index');
 const reviewschema = require('../schema/reviewschema');
+const {genId,getDate} = require('../routes/function');
 
 router.use(express.json());
 
@@ -16,14 +17,13 @@ router.post('/add-question',(req,res)=>{
     console.log('question');
 
     const question = new Question({
-        questionid: req.body.questionid,
+        questionid: genId(6),
         title: req.body.title,
         description: req.body.description,
         user: req.body.user,
         answercount: req.body.answercount,
-        answers: res.body.answers,
         answerdate: req.body.answerdate,
-        askdate: req.body.askdate,
+        askdate: getDate(),
         category: req.body.category
     });
 
@@ -78,7 +78,7 @@ router.get('/:id',(req,res)=>{
 
 //question->user id
 
-router.get('/:user',(req,res)=>{
+router.get('/uid/:user',(req,res)=>{
     Question.findOne({user: req.params.user},(err,question)=>{
         //check if user exists
     if(!question) return res.status(404).json({

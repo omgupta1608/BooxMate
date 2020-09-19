@@ -14,7 +14,7 @@ const questionschema = mongoose.Schema({
     },
 
     askdate:{
-        type: Date
+        type: String
     },
 
     user:{
@@ -22,11 +22,13 @@ const questionschema = mongoose.Schema({
     },
 
     answerscount:{
-        type: Number
+        type: Number,
+        default:0
     },
 
     isclosed:{
-        type: Boolean
+        type: Boolean,
+        default:false
     },
 
     category:{
