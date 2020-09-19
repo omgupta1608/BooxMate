@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BookCard from "./BookCard";
+import '../CSS/BooksDisplay.css'
 
 class BooksDisplay extends Component {
   render() {

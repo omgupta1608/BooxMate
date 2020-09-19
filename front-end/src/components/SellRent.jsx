@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar'
 import SellRentForm from './SellRentForm'
-import '../SellRent.css'
-//buy
+import '../CSS/SellRent.css'
+
 class SellRent extends Component {
 	state = {}
 	render() {

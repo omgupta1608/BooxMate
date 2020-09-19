@@ -1,35 +1,21 @@
-html{
-  height: 100%;
-  width: 100%;
-}
-
-*, *::before, *::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-a, a:hover, a::after, a::before {
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
+.sell-rent {
+	margin-top: 6rem;
 }
 
 .sell-rent-form {
-	margin: 2rem auto;
+	margin: 4rem auto;
 	min-height: 100vh;
 }
 
 .sell-rent-form form {
-	height: 100vh;
+	min-height: 100vh;
 	margin: 0 auto;
 	width: 60vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
+	font-size: 1.1rem;
 }
 
 form h1 {
@@ -65,6 +51,7 @@ form input, form select{
 .submit {
 	width: fit-content;
 	height: fit-content;
+	margin: 10px 0;
 	padding: 10px 20px;
 	border: none;
 	background-color: greenyellow;
@@ -73,4 +60,6 @@ form input, form select{
 
 #bookimage {
 	border: none;
+	min-width: fit-content;
+	width: min-content;
 }
