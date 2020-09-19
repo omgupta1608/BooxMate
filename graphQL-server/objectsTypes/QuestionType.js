@@ -32,7 +32,7 @@ const AnswerType = new GraphQLObjectType({
                 return user; 
             }
         },
-        answersdate: { type: GraphQLInt }, 
+        answerdate: { type: GraphQLString }, 
         hearts: { type: GraphQLInt }
     })
 });

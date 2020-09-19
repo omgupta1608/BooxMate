@@ -37,18 +37,20 @@ router.post('/add-request',(req,res)=>{
 
 //get api for all request
 router.get('/',async(req,res)=>{
-    const request = await Request.find();
-    console.log(request);
-    res.json({
-        data: request,
-        message: "All requests.."
+    const request = await Request.find({}, (err , data) => {
+        //console.log(request);
+        res.json({
+            data: data,
+            message: "All requests.."
+        });
     });
+    
 });
 
 //get api for a specific request
 router.get('/:id',(req,res)=>{
-    Request.findById(req.params.id, (err, request));
-    //check if user exists
+    Request.findOne({requestid: req.params.id }, (err, request) => {
+        //check if user exists
     if(!request) return res.status(404).json({
         data:{},
         message: 'No such review exist. Please check and try again later'
@@ -67,6 +69,8 @@ router.get('/:id',(req,res)=>{
             message: 'Some unexpected error occurred.'
         });
     }
+    });
+    
 });
 
 //request-> book

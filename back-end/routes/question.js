@@ -44,36 +44,40 @@ router.post('/add-question',(req,res)=>{
 
 //get api for all question
 router.get('/',async(req,res)=>{
-    const question = await Question.find();
-    console.log(question);
-    res.json({
-        data: question,
-        message: "All questions.."
+    const question = await Question.find({}, (err, data) => {
+        //console.log(question);
+        res.json({
+            data: data,
+            message: "All questions.."
+        });
     });
+    
 });
 
 //get api for a specific question
 router.get('/:id',(req,res)=>{
-    Question.findById(req.params.id, (err, question));
-    //check if user exists
-    if(!question) return res.status(404).json({
-        data:{},
-        message: 'No such question exist. Please check and try again later'
-    });
-
-    //if exist and no err
-    if(!err){
-        res.json({
-            data:question,
-            message:"Question fetched!"
-        });
-    }
-    else{
-        res.status(404).json({
+    Question.findOne({questionid: req.params.id}, (err, question) => {
+        if(!question) return res.status(404).json({
             data:{},
-            message: 'Some unexpected error occurred.'
+            message: 'No such question exist. Please check and try again later'
         });
-    }
+    
+        //if exist and no err
+        if(!err){
+            res.json({
+                data:question,
+                message:"Question fetched!"
+            });
+        }
+        else{
+            res.status(404).json({
+                data:{},
+                message: 'Some unexpected error occurred.'
+            });
+        }
+    });
+    //check if user exists
+    
 });
 
 //question->user id

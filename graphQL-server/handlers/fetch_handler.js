@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-var restPORT = 4610;
+var restPORT = 4640;
 const requestHTTPService = async (relativeURL) => {
     var data = null;
     await fetch(`http://localhost:${restPORT}/api${relativeURL}`)

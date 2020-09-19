@@ -17,8 +17,8 @@ router.post('/add-demo',(req,res)=>{
 
     const demo = new Demo({
         demoid: genId(6),
-        title: req.body.question,
-        description: req.body.answer,
+        title: req.body.title,
+        description: req.body.description,
         user: req.body.answerdate,
         demodate: getDate()
     });
@@ -41,12 +41,14 @@ router.post('/add-demo',(req,res)=>{
 
 //get api for all demo
 router.get('/',async(req,res)=>{
-    const demo = await Demo.find();
-    console.log(demo);
+    const demo = await Demo.find({}, (err, data) => {
+        //console.log(demo);
     res.json({
-        data: demo,
+        data: data,
         message: "All demos.."
     });
+    });
+    
 });
 
 //get api for a specific user

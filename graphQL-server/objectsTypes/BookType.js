@@ -26,14 +26,14 @@ module.exports.obj = new GraphQLObjectType({
         author: { type: GraphQLString },
         publisher: { type: GraphQLString },
         edition: { type: GraphQLString },
-        user: {
-            type: UserType,
-            resolve: async (parent) => {
-                var id = parent.user.userid;
-                var user = await fetchHandler(`/user/${id}`);
-                return user;                
-            }
-        },
+        // user: {
+        //     type: UserType,
+        //     resolve: async (parent) => {
+        //         var id = parent.user.userid;
+        //         var user = await fetchHandler(`/user/${id}`);
+        //         return user;                
+        //     }
+        // },
         requestcount: { type: GraphQLInt },
         issold: { type: GraphQLBoolean },
         postdate: { type: GraphQLString },

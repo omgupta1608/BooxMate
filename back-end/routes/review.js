@@ -38,18 +38,20 @@ router.post('/add-review',(req,res)=>{
 
 //get api for all review
 router.get('/',async(req,res)=>{
-    const review = await Review.find();
-    console.log(review);
-    res.json({
-        data: review,
-        message: "All reviews.."
+    const review = await Review.find({}, (err, data) => {
+        //console.log(review);
+        res.json({
+            data: data,
+            message: "All reviews.."
+        });
     });
+    
 });
 
 //get api for a specific review
 router.get('/:id',(req,res)=>{
-    Review.findById(req.params.id, (err, review));
-    //check if user exists
+    Review.findOne({ reviewid: req.params.id}, (err, review) => {
+        //check if user exists
     if(!review) return res.status(404).json({
         data:{},
         message: 'No such answer exist. Please check and try again later'
@@ -68,6 +70,8 @@ router.get('/:id',(req,res)=>{
             message: 'Some unexpected error occurred.'
         });
     }
+    });
+    
 });
 
 //review->demo id
