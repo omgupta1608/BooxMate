@@ -39,12 +39,21 @@ router.post('/add-answer',(req,res)=>{
 
 //get api for all answer
 router.get('/',async(req,res)=>{
-    const answer = await Answer.find();
-    console.log(answer);
-    res.json({
-        data: answer,
-        message: "All answers.."
+    const answer = await Answer.find({}, (err, answer) => {
+        if(!err){
+            res.json({
+                data: answer,
+                message: "All answers.."
+            });
+        }
+        else{
+            res.status(400).json({
+                data: {},
+                message: "Some error occured.."
+            }); 
+        }
     });
+    
 });
 
 //get api for a specific answer
@@ -64,7 +73,7 @@ router.get('/:id',(req,res)=>{
         });
     }
     else{
-        res.status(404).json({
+        res.status(400).json({
             data:{},
             message: 'Some unexpected error occurred.'
         });

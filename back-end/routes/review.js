@@ -23,13 +23,13 @@ router.post('/add-review',(req,res)=>{
 
     console.log(req.body);
 
-    answer.save((err,answer)=>{
+    review.save((err,review)=>{
         if(err) {
             console.log('inside err');
             res.send("Error: "+ err);
         }
         // res.send(user._id);
-        res.send(answer);
+        res.send(review);
         console.log('saved!');
     });
     

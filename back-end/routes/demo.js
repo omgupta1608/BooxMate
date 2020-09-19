@@ -41,12 +41,20 @@ router.post('/add-demo',(req,res)=>{
 
 //get api for all demo
 router.get('/',async(req,res)=>{
-    const demo = await Demo.find({}, (err, data) => {
+    const demo = await Demo.find({}, (err, demo) => {
         //console.log(demo);
-    res.json({
-        data: data,
-        message: "All demos.."
-    });
+        if(!err){
+            res.json({
+                data: demo,
+                message: "All demos.."
+            });
+        } 
+        else{
+            res.json({
+                data: {},
+                message: "Some unexpexted error occured"
+            });
+        }   
     });
     
 });

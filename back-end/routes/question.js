@@ -44,12 +44,21 @@ router.post('/add-question',(req,res)=>{
 
 //get api for all question
 router.get('/',async(req,res)=>{
-    const question = await Question.find({}, (err, data) => {
+    const question = await Question.find({}, (err, question) => {
         //console.log(question);
-        res.json({
-            data: data,
-            message: "All questions.."
-        });
+        if(!err){
+            res.json({
+                data: question,
+                message: "All questions.."
+            });
+        }
+        else{
+            res.json({
+                data: {},
+                message: "Some unexpected error occured"
+            });
+        }
+        
     });
     
 });
@@ -76,7 +85,7 @@ router.get('/:id',(req,res)=>{
             });
         }
     });
-    //check if user exists
+
     
 });
 
