@@ -1,14 +1,15 @@
 
-
-
 .cart-body {
-    margin-top: 4rem;
+    margin-top: 6rem;
     min-height: 100vh;
 }
 
 .cart-body h2 {
     margin: 2rem 0;
+    text-align: center;
+    width: 100%;
 }
+
 
 .bookcardforcart {
     display: flex;

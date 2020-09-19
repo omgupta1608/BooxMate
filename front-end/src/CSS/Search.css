@@ -1,0 +1,13 @@
+.search {
+    background-color: royalblue;
+    min-height: 100vh;
+}
+
+.search-result {
+    /* margin-top: 6rem; */
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
