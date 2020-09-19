@@ -34,7 +34,7 @@ const RootQueryType = new GraphQLObjectType({
 		user: {
 			type: UserType,
 			args: {
-				userid: { type: GraphQLInt }
+				userid: { type: GraphQLString }
 			},
 			resolve: async (parent, args) => {
 				var data = await fetchHandler(`/user/${args.userid}`);
