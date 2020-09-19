@@ -1,0 +1,24 @@
+.booksdisplay {
+    background-color: royalblue;
+  }
+  
+  .booksdisplay .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  .booksdisplay .heading a {
+    color: white;
+  }
+  
+  .booksdisplay .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-top: 2rem; */
+    padding: 0px 25px 25px 25px;
+  }
+  

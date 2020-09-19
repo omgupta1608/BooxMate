@@ -1,0 +1,18 @@
+.herobox {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 0;
+    background-color: rgb(255, 252, 68);
+    margin-top: 4rem;
+  }
+  
+  .herobox img {
+    margin: 5px;
+  }
+  
+  .herobox .herotitle {
+    display: none;
+    font-size: 3rem;
+  }
+  

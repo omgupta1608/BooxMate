@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../CSS/Linkbox.css'
 import { Link } from "react-router-dom";
 import sell_book from "../images/sell-book.png";
 import community_forum from "../images/community.png";

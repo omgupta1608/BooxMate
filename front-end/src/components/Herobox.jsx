@@ -1,4 +1,5 @@
 import React from 'react'
+import '../CSS/Herobox.css'
 
 const Herobox = () => {
     return (

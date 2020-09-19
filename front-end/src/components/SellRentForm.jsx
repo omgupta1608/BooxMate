@@ -22,7 +22,7 @@ export class SellRentForm extends Component {
 					<input type="text" name="name" placeholder="Your Name" />
 					<input type="text" name="bookname" placeholder="Title of the Book" />
 					<input type="text" name="bookauthor" placeholder="Name of the author" />
-					<select name="category" id="">
+					<select name="category" id="" placeholder="Category">
 						<option value="default">Category</option>
 						<option value="Novel">Novel</option>
 						<option value="Educational">Educational</option>
@@ -30,13 +30,15 @@ export class SellRentForm extends Component {
 						<option value="Other">Other</option>
 					</select>
 					<input type="text" name="location" placeholder="Your Location (State/City)" />
+					<p>What you want to do?</p>
 					<div className="radio-wrapper">
 						<input onClick={this.myfunction} className="sellradio" type="radio" name="radio" id="sellradio" />
 						<label htmlFor="sell-radio">Sell</label>
 						<input onClick={this.myfunction1} className="rentradio" type="radio" name="radio" id="rentradio" />
 						<label htmlFor="rent-radio">Rent</label>
-						<input type="file" name="bookimage" id="bookimage" accept="image/*" />
 					</div>
+					<p>Upload an image of Book: </p>
+					<input type="file" name="bookimage" id="bookimage" accept="image/*" />
 					<input type="text" name="bookmrp" id="" placeholder="M.R.P of the Book" />
 					<input type="text" name="bookprice" id="" placeholder="Price of the Book" />
 					<input id="rent-only" type="text" name="rent-duration" placeholder="Duration of the Renting period" />

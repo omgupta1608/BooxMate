@@ -1,0 +1,37 @@
+.link-box {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	min-height: 5rem;
+	background-color: royalblue;
+}
+
+.link-box-heading {
+	/* display: flex;
+    justify-content: center;
+    align-items: center; */
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.link-box-content {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-top: 1rem;
+}
+
+.link-box-content div {
+	text-align: center;
+	cursor: pointer;
+	/* border: 1px solid rgb(252, 111, 59); */
+	padding: 10px;
+	min-width: fit-content;
+	width: 25%;
+	background-color: #fff;
+}
+
+.link-box-content div img {
+	margin: 0 auto;
+}

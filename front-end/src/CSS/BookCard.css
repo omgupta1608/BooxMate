@@ -1,0 +1,36 @@
+.bookcard {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    min-width: 300px;
+    width: 30vw;
+    padding: 1.5rem;
+    margin: 15px 5px;
+    /* border: 1px solid rebeccapurple; */
+    min-height: 8rem;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .bookcard-left, .bookcard-right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  
+  .bookcard-left p, .bookcard-right p {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .bookcard-right {
+    text-align: right;
+  }
+  
+  .btn-details {
+    border: none;
+    border-radius: 50px;
+    padding: 5px 10px;
+    background-color: royalblue;
+    color: white;
+  }

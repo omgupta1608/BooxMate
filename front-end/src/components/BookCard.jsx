@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import BooksDisplay from './BooksDisplay'
-//Hey
+import '../CSS/BookCard.css'
+
 class Bookcard extends Component{
     render(){
     return (
@@ -14,7 +14,7 @@ class Bookcard extends Component{
             </div>
             <div className="bookcard-right">
                 <p>Rs.{this.props.price}</p>
-                <button className="book-details"> View Details </button>
+                <button className="btn-details"> View Details </button>
             </div>
         </div>
     )
