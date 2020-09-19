@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const Demo = require('../schema/demoschema');
 const bookschema = require('../schema/bookschema');
 const connect = require('../index');
+const {genId,getDate} = require('../routes/function');
 
 router.use(express.json());
 
@@ -15,16 +16,11 @@ router.post('/add-demo',(req,res)=>{
     console.log('demo');
 
     const demo = new Demo({
-        demoid: req.body.demoid,
+        demoid: genId(6),
         title: req.body.question,
         description: req.body.answer,
-        file: req.body.user,
         user: req.body.answerdate,
-        reviews:req.body.review,
-        starcount: req.body.starcount,
-        ratedcount: req.body.ratedcount,
-        reviewscount: req.body.reviewscount,
-        demodate: req.body.demodate
+        demodate: getDate()
     });
 
     console.log(req.body);

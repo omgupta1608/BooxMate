@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const Review = require('../schema/reviewschema');
 const connect = require('../index');
 const { request } = require('express');
+const {genId,getDate} = require('../routes/function');
 
 router.use(express.json());
 
@@ -14,7 +15,7 @@ router.post('/add-review',(req,res)=>{
     console.log('review');
 
     const review = new Review({
-        reviewid: req.body.reviewid,
+        reviewid: genId(6),
         review: req.body.review,
         user: req.body.user,
         reviewdate: req.body.reviewdate
@@ -71,7 +72,7 @@ router.get('/:id',(req,res)=>{
 
 //review->demo id
 
-router.get('/:demo',(req,res)=>{
+router.get('/demoid/:demo',(req,res)=>{
     Review.findOne({demo: req.params.demo},(err,review)=>{
         //check if user exists
     if(!review) return res.status(404).json({

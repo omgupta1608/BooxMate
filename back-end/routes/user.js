@@ -9,7 +9,6 @@ const connect = require('../index');
 router.use(express.json());
 
 
-
 //get api for all user
 router.get('/',async(req,res)=>{
     const user = await User.find();

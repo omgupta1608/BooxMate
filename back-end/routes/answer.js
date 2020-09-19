@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Answer = require('../schema/answerschema');
 const connect = require('../index');
+const {genId,getDate} = require('../routes/function');
 router.use(express.json());
 
 
@@ -14,11 +15,11 @@ router.post('/add-answer',(req,res)=>{
     console.log('answer');
 
     const answer = new Answer({
-        answerid: req.body.answerid,
+        answerid: genId(6),
         question: req.body.question,
         answer: req.body.answer,
         user: req.body.user,
-        answerdate: req.body.answerdate
+        answerdate: getDate()
     });
 
     console.log(req.body);
@@ -49,7 +50,7 @@ router.get('/',async(req,res)=>{
 //get api for a specific answer
 router.get('/:id',(req,res)=>{
     Answer.findOne({answerid: req.params.id},(err,answer)=>{
-        //check if user exists
+        //check if answer exists
     if(!answer) return res.status(404).json({
         data:{},
         message: 'No such book exist. Please check and try again later'
@@ -72,7 +73,7 @@ router.get('/:id',(req,res)=>{
     
 });
 
-router.get('/:question',(req,res)=>{
+router.get('/qid/:question',(req,res)=>{
     Answer.findOne({question: req.params.question},(err,answer)=>{
         //check if user exists
     if(!answer) return res.status(404).json({

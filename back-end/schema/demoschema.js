@@ -14,7 +14,8 @@ const demoschema = mongoose.Schema({
     },
 
     file:{
-        type: String
+        type: String,
+        default: ""
     },
 
     user:{
@@ -22,19 +23,22 @@ const demoschema = mongoose.Schema({
     },
 
     starcount:{
-        type: Number
+        type: Number,
+        default: 0
     },
 
     ratedcount:{
+        default: 0,
         type: Number
     },
 
     reviewscount:{
+        default: 0,
         type: Number
     },
     
     demodate:{
-        type: Date
+        type: String
     }   
 });
 

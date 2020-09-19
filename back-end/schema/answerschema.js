@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const answerschema = mongoose.Schema({
     answerid: {
-        type: String,
-        required:true,
+        type: String
     },
 
     question: {
@@ -11,8 +10,7 @@ const answerschema = mongoose.Schema({
     },
 
     answer:{
-        type: String,
-        required: true
+        type: String
     },
 
     user:{
@@ -20,7 +18,7 @@ const answerschema = mongoose.Schema({
     },
 
     answerdate:{
-        type: Date
+        type: "String"
         // required: true
     },
 
