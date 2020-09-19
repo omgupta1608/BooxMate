@@ -70,3 +70,7 @@ form input, form select{
 	background-color: greenyellow;
 	border-radius: 50px;
 }
+
+#bookimage {
+	border: none;
+}
