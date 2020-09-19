@@ -12,7 +12,7 @@ const requestHTTPService = async (relativeURL) => {
 }
 
 const postHTTPService = async (relativeURL, postData) => {
-    var response = null;
+    var data = null;
     await fetch(`http://localhost:${restPORT}/api${relativeURL}`, {
         method: 'POST',
 		body: postData,
