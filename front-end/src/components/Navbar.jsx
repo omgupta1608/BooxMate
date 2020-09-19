@@ -6,10 +6,6 @@ import LoginButton from './LoginButton';
 
 class Navbar extends Component {
     state = {  }
-    
-
-    
-
     goToCart = () => {
         window.open('/cart', '_self');
     }
@@ -17,14 +13,14 @@ class Navbar extends Component {
         window.open('/search', '_self');
     }
     updateUI = () => {
-        const { loginWithRedirect } = useAuth0();
-        const {user, isAuthenticated} = useAuth0();
+        // const { loginWithRedirect } = useAuth0();
+        // const {user, isAuthenticated} = useAuth0();
 
-        if(isAuthenticated){
-            <LogoutButton/>
-        }else{
-            <LoginButton/>
-        }
+        // if(isAuthenticated){
+        //     return (<LogoutButton/>)
+        // }else{
+        //     return (<LoginButton/>)
+        // }
 
     }
     render() { 

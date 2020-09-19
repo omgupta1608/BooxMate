@@ -3,13 +3,15 @@ import React, { Component } from 'react'
 //Question Card
 
 export class Question extends Component {
+    goToQuestionDetails = () => {
+        window.open(`/question/${this.props.questionid}`,'_self');
+    }
     render() {
         return (
             <div className="question">
-                <p className="ques">Q. Which is the best book to learn JavaScript?</p>
-                <small>No of Answers: 3</small>
-                <p className="ans">Ans. You can learn javascript from HeadFirst javascript book.</p>
-                <button className="give-answer">Submit your Answer</button>
+                <p className="ques">{this.props.title}</p>
+                <small>{this.props.answerscount}</small>
+                <button className="give-answer" onClick={this.goToQuestionDetails}>Submit your Answer</button>
             </div>
         )
     }

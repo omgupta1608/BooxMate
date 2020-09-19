@@ -10,29 +10,28 @@ import DemoBook from "./components/DemoBook";
 import Books from "./api_handlers/books";
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
+import BookDetails from './components/BookDetails';
+import QuestionInput from './components/QuestionInput';
+import QuestionPage from './components/QuestionPage';
 class App extends Component {
-  state = {};
-
-  // App() {
-  //   return (
-  //     <>
-  //       <LoginButton />
-  //       <LogoutButton />
-  //     </>
-  //   );
-  // }
-
+  state = {}
   render() {
     return (
       <BrowserRouter>
         <div className="content">
           <Switch>
-         <Route path='/bookDetails/(:any)' component={SignUp}></Route>
-         <Route path='/' component={HomePage}></Route>
+         
+         
+         <Route path='/bookDetails' component={BookDetails}></Route>
          <Route path='/cart' component={Profile}></Route>
          <Route path='/search' component={Profile}></Route>
-         </Switch>
-        <HomePage/>                                                                                                                                                                                                             
+         <Route path='/SellRent' component={SellRent}></Route>
+         <Route path='/CommunityForum' exact component={CommunityForum}></Route>
+         <Route path='/DemoBook' exact component={DemoBook}></Route>
+         <Route path='/' exact component={HomePage}></Route>
+          <Route path='/question' component={QuestionPage}></Route>
+          <Route path='/communityforum' component={CommunityForum}></Route>
+         </Switch>                                                                                                                                                                                                             
         </div>
       </BrowserRouter>
     );
