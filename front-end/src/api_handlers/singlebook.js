@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Component } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import BookCard from '../components/BookCard';
+import BookCard from "../components/BookCard";
 
 export const GET_ONE_BOOKS = gql`
   query {
-    book(bookid: ${this.props.bookid}) {
+    books {
       bookid
       bookname
       bookdescription
@@ -23,23 +23,29 @@ export const GET_ONE_BOOKS = gql`
     }
   }
 `;
-
-export default () => (
-  <Query query={GET_ONE_BOOKS}>
-    {({ loading, data }) =>
-      !loading && (
-        <div className="bookswrap">
-          {data.books.map((book) => (
-            <BookCard
-                bookname={book.bookname}
-                bookid={book.bookid}
-                location={book.location}
-                price={book.price}
-                postdate={book.postdate}
-            ></BookCard>
-          ))}
-        </div>
-      )
+class OneBook extends Component{
+    render(){
+        return(
+            <Query query={GET_ONE_BOOKS}>
+            {({ loading, data }) =>
+              !loading && (
+                <div className="bookswrap">
+                  {data.books.map((book) => {
+                    if (book.bookid === this.props.bookid) {
+                      return (<BookCard
+                        bookname={book.bookname}
+                        bookid={book.bookid}
+                        location={book.location}
+                        price={book.price}
+                        postdate={book.postdate}
+                      ></BookCard>)
+                    }
+                  })}
+                </div>
+              )
+            }
+          </Query>
+        )
     }
-  </Query>
-);
+}
+export default OneBook

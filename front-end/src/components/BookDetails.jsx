@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import OneBook from '../api_handlers/singlebook';
 class BookDetails extends Component {
     state = {  }
+    id = '7V2rFh'
     render() { 
         return ( 
-            <h1>Hey</h1>
+            <OneBook 
+            bookid={this.id}
+            ></OneBook>
         );
     }
 }
