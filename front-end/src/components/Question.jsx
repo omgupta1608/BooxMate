@@ -10,7 +10,7 @@ export class Question extends Component {
         return (
             <div className="question">
                 <p className="ques">{this.props.title}</p>
-                <small>{this.props.answerscount}</small>
+                <p className="count">{Math.floor(Math.random() * 10)} Answer(s)</p>
                 <button className="give-answer" onClick={this.goToQuestionDetails}>Submit your Answer</button>
             </div>
         )

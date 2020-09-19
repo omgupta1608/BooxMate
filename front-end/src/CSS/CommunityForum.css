@@ -46,14 +46,21 @@
 	padding: 1.5rem 3rem;
 	margin: 10px auto;
 	border: 1px solid chartreuse;
+	transition: all 0.5s ease;
 }
 
-.question small {
-	float: right;
+.question .count {
+	font-size: 1.5rem;
+	color: green;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }
 
-.question .ques, .question .ans {
+.question .ques {
 	padding: 5px 0;
+	width: 60%;
+	font-size: 2.5rem;
+	font-weight: bold;
 }
 
 .give-answer {
@@ -63,25 +70,7 @@
 	padding: 10px 15px;
 	font-size: 1.05rem;
 	border-radius: 50px;
-}
-
-.submit-answer-popup {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 50vh;
-	width: 60vw;
-	border-radius: 10px;
-	background-color: thistle;
-	transition: all 20ms ease;
-	/* visibility: hidden; */
-	display: none;
-	pointer-events: none;
+	background-color: rgb(129, 245, 129);
 }
 
 .answer-input {
@@ -102,12 +91,4 @@
 	border-radius: 50px;
 	font-size: 1.2rem;
 }
-
-.active {
-	top: 50%;
-	transition: all 20ms ease;
-	display: block;
-	/* visibility: visible; */
-	display: block;
-	pointer-events: all;
-}
+	

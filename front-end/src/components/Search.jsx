@@ -9,9 +9,6 @@ export class Search extends Component {
             <div className="search">
                 <Navbar />
                 <div className="search-result">
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
                 </div>
             </div>
         )

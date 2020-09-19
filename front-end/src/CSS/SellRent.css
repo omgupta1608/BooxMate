@@ -7,7 +7,7 @@
 	min-height: 100vh;
 }
 
-.sell-rent-form form {
+.sell-rent-form .form {
 	min-height: 100vh;
 	margin: 0 auto;
 	width: 60vw;
@@ -18,11 +18,11 @@
 	font-size: 1.1rem;
 }
 
-form h1 {
+.form h1 {
 	margin: 4rem 0;
 }
 
-form input, form select{
+.form input, .form select{
 	height: 3rem;
 	font-size: 1.1rem;
 	padding: 10px 15px;

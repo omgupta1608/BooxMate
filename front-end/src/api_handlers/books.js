@@ -29,7 +29,7 @@ export default () => (
     {({ loading, data }) =>
       !loading && (
         <div className="bookswrap">
-          {data.books.map((book) => (
+          {data.books.reverse().map((book) => (
             <BookCard
                 bookname={book.bookname}
                 bookid={book.bookid}

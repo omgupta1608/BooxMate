@@ -21,8 +21,9 @@ export default () => (
   <Query query={GET_ALL_QUESTIONS}>
     {({ loading, data }) =>
       !loading && (
-        <div>
-          {data.questions.map((question) => (
+        <div className="recent-ques">
+          
+          {data.questions.reverse().map((question) => (
             <Question
                 questionid={question.questionid}
                 title={question.title}
