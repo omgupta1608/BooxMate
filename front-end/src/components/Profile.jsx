@@ -1,16 +1,25 @@
 import React from 'react';
 import {useAuth0} from '@auth0/auth0-react';
+import '../CSS/Profile.css'
+import Navbar from './Navbar';
 
 const Profile = ()=>{
     const {user, isAuthenticated} = useAuth0();
     
 return (
     isAuthenticated &&(
-        <div>
-            <img src = {user.picture} alt={user.name}></img>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            {JSON.stringify(user,null,2)}
+        <div className="profile">
+            <Navbar />
+            <div className="profilecard">
+                <div className="profilepic">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div className="profileinfo">
+                    <h2>Username</h2>
+                    <p>Email Address</p>
+                </div>
+                {JSON.stringify(user,null,2)}
+            </div>
         </div>
     )
 )

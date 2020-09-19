@@ -17,9 +17,15 @@ class Navbar extends Component {
         // const {user, isAuthenticated} = useAuth0();
 
         // if(isAuthenticated){
+<<<<<<< Updated upstream
         //     return (<LogoutButton/>)
         // }else{
         //     return (<LoginButton/>)
+=======
+        //     <LogoutButton/>
+        // }else{
+        //     <LoginButton/>
+>>>>>>> Stashed changes
         // }
 
     }
