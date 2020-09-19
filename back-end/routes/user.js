@@ -8,15 +8,48 @@ const connect = require('../index');
 
 router.use(express.json());
 
+router.post('/add-user',(req,res)=>{
+    console.log('user');
 
+<<<<<<< Updated upstream
+=======
+    const user = new User({
+        userid: req.body.userid,
+        uname: req.body.uname,
+        upassword: req.body.upassword,
+        contact: req.body.contact,
+        uemail: req.body.uemail,
+        profilepic: req.body.profilepic
+    });
+
+    console.log(req.body);
+
+    answer.save((err,answer)=>{
+        if(err) {
+            console.log('inside err');
+            res.send("Error: "+ err);
+        }
+        // res.send(user._id);
+        res.send(answer);
+        console.log('saved!');
+    });
+    
+
+});
+
+>>>>>>> Stashed changes
 //get api for all user
 router.get('/',async(req,res)=>{
-    const user = await User.find();
-    console.log(user);
-    res.json({
-        data: user,
-        message: "All users.."
+    const user = await User.find().exec((err,user) => {
+        if(!err){
+            console.log(user);
+            res.json({
+                data: user,
+                message: "All users.."
+            });
+        }
     });
+    
 });
 
 //get api for a specific user

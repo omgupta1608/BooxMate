@@ -129,7 +129,7 @@ router.post('/add-book',(req,res)=>{
 
 //get api for all the books
 router.get('/',async(req,res)=>{
-    const book = await Book.find()({}, (err, book) => {
+    const book = await Book.find({}, (err, book) => {
         if(!err){
             res.json({
                 data: book,

@@ -6,6 +6,10 @@ const dotenv = require('dotenv');
 const Answer = require('../schema/answerschema');
 const connect = require('../index');
 const {genId,getDate} = require('../routes/function');
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 router.use(express.json());
 
 
@@ -15,11 +19,19 @@ router.post('/add-answer',(req,res)=>{
     console.log('answer');
 
     const answer = new Answer({
+<<<<<<< Updated upstream
         answerid: genId(6),
         question: req.body.question,
         answer: req.body.answer,
         user: req.body.user,
         answerdate: getDate()
+=======
+        answerid: genId,
+        question: req.body.question,
+        answer: req.body.answer,
+        user: req.body.user,
+        answerdate: getDate
+>>>>>>> Stashed changes
     });
 
     console.log(req.body);
@@ -62,7 +74,7 @@ router.get('/:id',(req,res)=>{
         //check if answer exists
     if(!answer) return res.status(404).json({
         data:{},
-        message: 'No such book exist. Please check and try again later'
+        message: 'No such answer exist. Please check and try again later'
     });
 
     //if exist and no err
