@@ -22,13 +22,13 @@ router.post('/add-request',(req,res)=>{
 
     console.log(req.body);
 
-    answer.save((err,answer)=>{
+    request.save((err,request)=>{
         if(err) {
             console.log('inside err');
             res.send("Error: "+ err);
         }
         // res.send(user._id);
-        res.send(answer);
+        res.send(request);
         console.log('saved!');
     });
     
