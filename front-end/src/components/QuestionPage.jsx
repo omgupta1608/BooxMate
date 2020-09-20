@@ -7,7 +7,10 @@ class QuestionPage extends Component {
     render() { 
         return (
             <div>  
-            <Question/>
+                  <div className="question">
+                <p className="ques">Which is best Fantasy Book to read</p>
+                <p className="count">4 Answer(s)</p>
+               </div>
             <AllAnswers/>
             </div>
         );

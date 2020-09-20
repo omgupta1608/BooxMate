@@ -26,7 +26,7 @@ export class SellRentForm extends Component {
 		console.log(data);
 		var response = await axios.post('http://localhost:4680/api/book-2/add-book', data).then(function (response) {
 			//document.getElementById('question-input').value = '';
-			//window.open('/','_self');
+			window.open('/','_self');
 			console.log(response);
 		});
 
