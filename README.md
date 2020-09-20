@@ -1,7 +1,7 @@
 # BooxMate - Let's Unbox Knowledge
 Our hack for Silly Hacks 2020.
 
-![BooxMate screenshot](https://raw.githubusercontent.com/omgupta1608/BooxMate/master/data/git-ss.png)
+![BooxMate screenshot](https://raw.githubusercontent.com/omgupta1608/BooxMate/master/git-ss.png)
 
 ## About BOOXMATE
 
