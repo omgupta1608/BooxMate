@@ -81,18 +81,21 @@ router.post('/upload',upload.single('bookimage'),(req,res)=>{       //multer can
 //adding a book
 router.post('/add-book',(req,res)=>{
     
-    // var imagename = null;
-    // fetch('http://localhost:4650/upload',{method: 'POST',body: req.body.image})
-    // .then((res)=>{
-    //     console.log(res);
-    //     imagename = res.filename;
-    //     .then(res => {
-    //         if (res.resultCode == "200") return res.json();
-    //         return Promise.reject(`Bad call: ${res.resultCode}`);
+    var imagename = null;
+    fetch('http://localhost:4650/upload',{method: 'POST',body: req.body.image})
+    .then((res)=>{
+        if (res.resultCode == "200") {return res.json();
+            console.log(res);
+            imagename = res.filename;
+        } return(res('Error')) })  
+
+       
+            
+            
 
     const book = new Book({
         bookid: genId(6),
-      //  bookimage: imagename,
+        bookimage: imagename,
         bookname: req.body.bookname,
         location: req.body.location,
         bookdescripition: req.body.bookdescripition,

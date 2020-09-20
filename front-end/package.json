@@ -11,6 +11,7 @@
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
+    "materialize-css": "^1.0.0",
     "react": "^16.13.1",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.13.1",
