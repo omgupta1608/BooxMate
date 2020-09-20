@@ -25,7 +25,7 @@ We have a great community channel for book lovers where you can ask any question
  - MongoDB
  
 ### Jugaad
- We wrote all the REST APIs that weree required in the application but when we integrated it with the frontend we faced some performance flaws in nested data. 
+ We wrote all the REST APIs that were required in the application but when we integrated it with the frontend we faced some performance flaws in nested data. 
  So, after hours of research we came up with the solution to go with GraphQL which significantly improved data latency.
  
 ## Team CipherROR
